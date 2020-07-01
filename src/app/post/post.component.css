@@ -1,0 +1,10 @@
+.post {
+ padding: .5rem 1rem;
+ border: 1px dashed;
+ margin-bottom: 1rem;
+}   
+ h1 {
+    color: blue;
+    font-size: 1rem;
+    
+}
