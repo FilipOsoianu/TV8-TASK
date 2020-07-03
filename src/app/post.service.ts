@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import { Post } from '../post'
-import { environment } from '../../environments/environment.prod'
-import {Media} from '../post/media'
+import { Post } from './post'
+import { environment } from '../environments/environment.prod'
+import {Media} from './media'
 @Injectable({
   providedIn: 'root'
 })

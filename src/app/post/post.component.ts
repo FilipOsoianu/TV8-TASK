@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from "rxjs";
 
+import { Router, NavigationExtras } from "@angular/router";
+
 import { Post } from '../post';
-import { PostService } from '../posts/post.service';
-import { Media } from './media';
+import { PostService } from '../post.service';
+import { Media } from '../media';
 
 @Component({
   selector: 'app-post',
@@ -13,19 +15,34 @@ import { Media } from './media';
 export class PostComponent implements OnInit {
 
   @Input() post: Post
-  media: Observable<Media>;
-  imageUrl: string;
+  media$: Observable<Media>;
+  media: Media;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private router: Router) { }
+
 
   ngOnInit(): void {
     this.getMedia();
-
-    this.media.subscribe((data: Media) => this.imageUrl = data.media_details.sizes.medium.source_url)
   }
 
   getMedia(): void {
-    this.media = this.postService.getPostMedia(this.post._links["wp:featuredmedia"][0].href)
+    this.media$ = this.postService.getPostMedia(this.post._links["wp:featuredmedia"][0].href)
+    this.media$.subscribe((data: Media) => {
+      this.media = data;
+    })
+
+
+  }
+
+  public onTap() {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "post": JSON.stringify(this.post),
+        "media": JSON.stringify(this.media)
+      },
+      fragment: 'post'
+    };
+    this.router.navigate(["post/" + this.post.slug], navigationExtras);
   }
 
 }

@@ -1,4 +1,9 @@
 <div class="post">
     <h1> {{post.title.rendered}} </h1>
-    <img [src]="imageUrl">
+    <div *ngIf="media$ |async as media">
+        <div *ngIf="media.media_details.sizes.medium.source_url as medium">
+            <img [src]="medium">
+        </div>
+    </div>
+    <button (click)="onTap()"> Click </button>
 </div>
