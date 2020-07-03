@@ -1,18 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PostsComponent } from '../app/posts/posts.component';
-import { PostPageComponent } from '../app/post-page/post-page.component';
 const routes: Routes = [
-  { path: '', redirectTo: '/posts', pathMatch: 'full' },
-  { path: 'posts', component: PostsComponent },
-  { path: 'post/:slug', component: PostPageComponent },
+  
+  {
+    path: '',
+    redirectTo: 'posts',
+    pathMatch: 'full'
+  },
+  {
+    path: 'posts',
+    loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
+  },
+  {
+    path: 'post/:slug',
+    loadChildren: () => import('./post-page/post-page.module').then(m => m.PostPageModule)
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
+  exports: [RouterModule],
+  providers: []
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule { }

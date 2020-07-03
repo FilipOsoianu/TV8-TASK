@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Post } from '../post';
 import { Media } from '../media';
 import { Observable, Observer } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-post-page',
@@ -23,7 +22,6 @@ export class PostPageComponent implements OnInit {
   ngOnInit(): void {
     this.post$ = this.route.queryParamMap.pipe(map(params => JSON.parse(params.get('post'))));
     this.media$ = this.route.queryParamMap.pipe(map(params => JSON.parse(params.get('media'))));
-
 
   }
 
