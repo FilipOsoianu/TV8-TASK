@@ -9,7 +9,10 @@ export interface Post {
   sticky: boolean;
   template: string;
   categories: number[];
+  format: string;
   _links: Links;
+  video_embed: string;
+
 }
 
 interface Links {

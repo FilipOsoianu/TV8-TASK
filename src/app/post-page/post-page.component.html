@@ -1,9 +1,24 @@
-<!-- <div *ngIf="media$ |async as media">
-    <div [innerHTML]="media.description.rendered"></div>
-
-</div> -->
-
 <ng-container *ngFor="let post of post$ | async ">
     <div [innerHTML]="post.title.rendered"></div>
-    <div [innerHTML]="post.content.rendered | safe: 'html'" ></div>
+
+    <ng-container *ngIf="media$|async as media">
+
+        <ng-container *ngIf="post.video_embed  as videoUrl; else videoNotFound ">
+            <iframe width="1280" height="720"
+                [src]="'https://www.youtube.com/embed/' + getUrlId( videoUrl) |safe:'resourceUrl'" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>\
+        </ng-container>
+
+        <ng-template #videoNotFound>
+            <ng-container *ngIf="media.media_details.sizes.full.source_url as full">
+                <div>
+                    <img [src]="full" width="1280" height="720">
+                </div>
+            </ng-container>
+        </ng-template>
+
+        <div [innerHTML]="post.content.rendered | safe: 'html'"></div>
+
+    </ng-container>
 </ng-container>
