@@ -1,8 +1,9 @@
-<div>
-    <!-- {{post.title.rendered}} -->
-    <!-- {{post$.title.rendered |async}} -->
-    <!-- [innerHTML] = {{post.content.rendered}}  -->
-    <div *ngIf="post$ |async as post"> {{post.title.rendered}} </div>
-    <div *ngIf="media$ |async as media">  <img src={{media.media_details.sizes.medium.source_url}}> </div>
-   
-</div>
+<!-- <div *ngIf="media$ |async as media">
+    <div [innerHTML]="media.description.rendered"></div>
+
+</div> -->
+
+<ng-container *ngFor="let post of post$ | async ">
+    <div [innerHTML]="post.title.rendered"></div>
+    <div [innerHTML]="post.content.rendered | safe: 'html'" ></div>
+</ng-container>

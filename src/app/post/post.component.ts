@@ -27,22 +27,10 @@ export class PostComponent implements OnInit {
 
   getMedia(): void {
     this.media$ = this.postService.getPostMedia(this.post._links["wp:featuredmedia"][0].href)
-    this.media$.subscribe((data: Media) => {
-      this.media = data;
-    })
-
-
   }
 
   public onTap() {
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        "post": JSON.stringify(this.post),
-        "media": JSON.stringify(this.media)
-      },
-      fragment: 'post'
-    };
-    this.router.navigate(["post/" + this.post.slug], navigationExtras);
+    this.router.navigate(["post/" + this.post.slug]);
   }
 
 }
