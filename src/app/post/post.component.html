@@ -1,9 +1,21 @@
 <div class="post">
     <h1> {{post.title.rendered}} </h1>
-    <div *ngIf="media$ |async as media">
-        <div *ngIf="media.media_details.sizes.medium.source_url as medium">
-            <img [src]="medium">
-        </div>
-    </div>
+    <ng-container *ngIf="media$ |async as media">
+        <ng-container *ngIf="media.media_details.sizes.venosa_grid!== undefined;  else venosaSmallNotFound">
+            <ng-container *ngIf="media.media_details.sizes.venosa_small.source_url as venosa_small">
+                <img [src]="venosa_small">
+            </ng-container>
+        </ng-container>
+    </ng-container>
+
+    <ng-template #venosaSmallNotFound>
+        <!-- <ng-container *ngIf="media.media_details.sizes.full.source_url as full">
+            <div>
+                <img [src]="full" width="1280" height="720">
+            </div>
+        </ng-container> -->
+        <h1>Nu </h1>
+    </ng-template>
+
     <button (click)="onTap()"> Click </button>
 </div>

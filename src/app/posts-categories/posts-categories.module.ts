@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PostsRoutingModule } from './posts-routing.module';
-import { PostsComponent } from './posts.component';
+import { PostsRoutingModule } from './posts-categories-routing.module';
+import { PostsCategoriesComponent } from './posts-categories.component';
 import { PostModule } from '../post/post.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,7 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         PostModule,
         NgbModule
     ],
-    declarations: [PostsComponent],
-    exports: [PostsComponent]
+    declarations: [PostsCategoriesComponent],
+    exports: [PostsCategoriesComponent]
 })
-export class PostsModule { }
+export class PostsCategoriesModule { }

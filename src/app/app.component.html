@@ -1,2 +1,11 @@
-{{title}}
+<button (click)="Home()"> {{title}}</button>
+
+<nav>
+    <ul>
+        <li *ngFor="let categorie of categories$ |async">
+            <button (click)="onTap(categorie.id)"> {{categorie.name}} </button>
+        </li>
+    </ul>
+</nav>
+
 <router-outlet></router-outlet>
