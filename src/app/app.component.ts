@@ -22,7 +22,7 @@ export class AppComponent {
     this.categories$ = this.postService.getCategories();
   }
   onTap(categorie: string) {
-    this.router.navigate(["posts/" + categorie]);
+    this.router.navigate(["category/" + categorie]);
   }
 
   Home() {

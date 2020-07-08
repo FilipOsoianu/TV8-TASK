@@ -17,7 +17,7 @@ export class PostService {
   getPosts(page: number, categories?: string): Observable<Post[]> {
     let params = new HttpParams();
     params = params.append('page', page.toString());
-    if (categories !== undefined) {
+    if (categories !== undefined && categories !== null) {
       params = params.append('categories', categories);
       return this.http.get<Post[]>(this.BASE_URL + '/posts', { params: params });
     } else {

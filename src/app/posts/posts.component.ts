@@ -1,40 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, forkJoin, from } from "rxjs";
-import { map } from 'rxjs/operators'
 import { PostService } from '../post.service';
-
 import { Post } from '../post';
-import { Categories } from '../categories'
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-posts',
+  selector: 'app-posts-categories',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
 
-  
   posts: Post[] = [];
+  categorie: string;
 
   private currentPage: number = 1;
 
-
-  constructor(private postService: PostService, private router: Router) { }
+  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
   active = 1
   ngOnInit(): void {
-    this.getPosts(this.currentPage);
+    this.categorie = this.route.snapshot.paramMap.get('slug');
+    console.log(this.categorie)
+    this.getPosts(this.currentPage, this.categorie);
   }
 
-  getPosts(page: number): void {
-    this.postService.getPosts(page).subscribe(nextPage => {
+  getPosts(page: number, categories?: string): void {
+    this.postService.getPosts(page, categories).subscribe(nextPage => {
       this.posts = this.posts.concat(nextPage);
     });
     this.currentPage++;
   }
 
   getNextPage(): void {
-    this.getPosts(this.currentPage);
+    this.getPosts(this.currentPage, this.categorie);
   }
 
 
