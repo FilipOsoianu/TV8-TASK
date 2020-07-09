@@ -5,13 +5,15 @@ import { PostsRoutingModule } from './posts-routing.module';
 import { PostsComponent } from './posts.component';
 import { PostModule } from '../post/post.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
     imports: [
         CommonModule,
         PostsRoutingModule,
         PostModule,
-        NgbModule
+        NgbModule,
+        InfiniteScrollModule,
     ],
     declarations: [PostsComponent],
     exports: [PostsComponent]

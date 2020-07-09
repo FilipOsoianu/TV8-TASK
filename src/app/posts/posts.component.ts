@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-posts-categories',
@@ -21,7 +22,6 @@ export class PostsComponent implements OnInit {
   active = 1
   ngOnInit(): void {
     this.categorie = this.route.snapshot.paramMap.get('slug');
-    console.log(this.categorie)
     this.getPosts(this.currentPage, this.categorie);
   }
 
@@ -36,5 +36,8 @@ export class PostsComponent implements OnInit {
     this.getPosts(this.currentPage, this.categorie);
   }
 
+  onScroll() {
+      this.getNextPage();
+   }
 
 }

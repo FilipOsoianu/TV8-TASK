@@ -1,0 +1,22 @@
+.post-title {
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: -0.5px;
+}
+
+.post-contenet {
+    margin: 60px;
+    padding: 35px;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 48px;
+    line-height: 1.24;
+    color: #2d3047;
+    margin: 20px;
+}
+
+p {
+    margin: 20px;
+}

@@ -1,10 +1,11 @@
-.post {
- padding: .5rem 1rem;
- border: 1px dashed;
- margin-bottom: 1rem;
-}   
- h1 {
-    color: blue;
+.card {
+    padding: 10px;
+    border: 1px dashed;
+    margin-bottom: 10px;
+    width: 400px;
+}
+
+h1 {
+    color: black;
     font-size: 1rem;
-    
 }
