@@ -15,8 +15,7 @@ import { Media } from '../media';
 export class PostComponent implements OnInit {
 
   @Input() post: Post
-  media$: Observable<Media>;
-  media: Media;
+  media$: Observable<string>;
 
   constructor(private postService: PostService, private router: Router) { }
 
@@ -26,7 +25,7 @@ export class PostComponent implements OnInit {
   }
 
   getMedia(): void {
-    this.media$ = this.postService.getPostMedia(this.post._links["wp:featuredmedia"][0].href)
+    this.media$ = this.postService.getPostImage(this.post)
   }
 
   public onTap() {

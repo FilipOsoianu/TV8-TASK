@@ -1,16 +1,26 @@
 <div class="header">
-    <a href="/" class="header-logo">
-        <img src="https://tv8.md/wp-content/uploads/2020/06/logo-tv8-3ani.gif" width="88" height="40">
+    <a href="/">
+        <img src="https://tv8.md/wp-content/uploads/2020/06/logo-tv8-3ani.gif">
     </a>
+    <span>pentru oameni liberi</span>
 
-    <span class="header-subtitle-text">pentru oameni liberi</span>
-    <nav>
+</div>
+<nav class="nav">
+    <ul>
+        <li *ngFor="let categorie of categories$ |async">
+            <a [href]="'category/' + categorie.id"> {{categorie.name |lowercase}}</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="dropdown">
+    <button class="dropbtn">Category</button>
+    <div class="dropdown-content">
         <ul>
             <li *ngFor="let categorie of categories$ |async">
-                <a class="nav-link" [href]="'category/' + categorie.id"> {{categorie.name |lowercase}}</a>
+                <a [href]="'category/' + categorie.id"> {{categorie.name |lowercase}}</a>
             </li>
         </ul>
-    </nav>
+    </div>
 </div>
-
 <router-outlet></router-outlet>

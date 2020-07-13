@@ -4,18 +4,24 @@
     padding: 20px 40px 5px 40px;
 }
 
-.header-subtitle-text {
+.header span {
     font-size: 24px;
     color: #a03065;
     font-style: italic;
     font-weight: bold;
 }
 
-.header-logo {
-    margin-left: 0px;
+.header img {
+    width: 88px;
+    height: auto;
 }
 
-.header ul {
+.nav {
+    margin: auto 20px auto 20px;
+    overflow: hidden;
+}
+
+.nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -24,11 +30,11 @@
     width: fit-content;
 }
 
-.header li {
+.nav li {
     float: left;
 }
 
-.header li a {
+.nav li a {
     display: block;
     color: black;
     text-align: center;
@@ -37,11 +43,71 @@
     text-decoration: none;
 }
 
-.header li a:hover {
+.nav li a:hover {
     display: block;
     color: #a03065;
     text-align: center;
     font-weight: bold;
     padding: 16px;
     text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .nav li {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .dropbtn {
+        display: none;
+    }
+}
+
+.dropbtn {
+    background-color: #a03065;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a:hover {
+    display: block;
+    color: #a03065;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.dropdown-content a {
+    display: block;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #a03065;
 }

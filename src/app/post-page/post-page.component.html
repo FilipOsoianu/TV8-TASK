@@ -1,33 +1,20 @@
-<ng-container *ngFor="let post of post$ | async ">
+<div class="post">
 
-    <div class="post-title">
-        <h2 [innerHTML]="post.title.rendered"></h2>
-    </div>
-    <div class="post-contenet">
+    <ng-container *ngFor="let post of post$ | async ">
 
-        <ng-container *ngIf="post.video_embed  as videoUrl; else videoNotFound ">
-            <iframe width="1280" height="720" [src]="'https://www.youtube.com/embed/' + getUrlId( videoUrl) |safe:'resourceUrl'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\
+        <div class="post-title">
+            <h1>
+                {{post.title.rendered}}
+            </h1>
+        </div>
+
+        <ng-container *ngIf="video; else videoNotFound ">
+            <iframe [src]="video |safe:'resourceUrl'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </ng-container>
 
         <ng-template #videoNotFound>
-            <ng-container *ngIf="media$ !== null">
-                <ng-container *ngIf="media$ | async as media">
-                    <ng-container *ngIf="media.media_details.sizes.full !== undefined;  else mediaFullNotFound">
-                        <ng-container *ngIf="media.media_details.sizes.full.source_url as full">
-                            <img [src]=" full " width="1280 " height="720 ">
-                        </ng-container>
-                    </ng-container>
-
-
-                    <ng-template #mediaFullNotFound>
-                        <ng-container *ngIf="media as media ">
-                            <img [src]="media.source_url" width="1280 " height="720 ">
-                        </ng-container>
-                    </ng-template>
-                </ng-container>
-            </ng-container>
+            <img [src]=" media$|async ">
         </ng-template>
-
-        <p [innerHTML]="post.content.rendered | safe: 'html' "></p>
-    </div>
-</ng-container>
+        <div class="post-contenet" [innerHTML]="post.content.rendered | safe: 'html' "></div>
+    </ng-container>
+</div>

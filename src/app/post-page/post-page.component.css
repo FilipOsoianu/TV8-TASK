@@ -1,22 +1,58 @@
-.post-title {
-    font-size: 48px;
-    line-height: 60px;
-    letter-spacing: -0.5px;
+.post {
+    margin: 15px;
 }
 
 .post-contenet {
-    margin: 60px;
-    padding: 35px;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 800px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
-h2 {
-    font-size: 48px;
-    line-height: 1.24;
-    color: #2d3047;
-    margin: 20px;
+.post img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 1000px;
+    height: auto;
+    padding: 20px;
 }
 
-p {
-    margin: 20px;
+.post iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 1280px;
+    height: 720px;
+    padding: 20px;
+}
+
+.post-title {
+    margin: auto;
+    max-width: 100%;
+    width: 1500px;
+}
+
+.post-title h1 {
+    color: black;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 450px) {
+    .post-title h1 {
+        color: black;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .post p {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+        max-width: 100%;
+        width: 800px;
+    }
 }

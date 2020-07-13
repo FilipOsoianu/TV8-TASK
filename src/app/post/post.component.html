@@ -1,23 +1,8 @@
-<a class="nav-link" [href]="'post/' + post.slug">
-
+<a [href]="'post/' + post.slug">
     <div class="card">
-        <ng-container *ngIf="media$ !== null">
-
-            <ng-container *ngIf="media$ |async as media">
-                <ng-container *ngIf="media.media_details.sizes.medium!== undefined;  else venosaSmallNotFound">
-                    <ng-container *ngIf="media.media_details.sizes.medium.source_url as venosa_small">
-                        <img class="card-img-top" [src]="venosa_small" width="300" height="169">
-                    </ng-container>
-                </ng-container>
-
-                <ng-template #venosaSmallNotFound>
-                    <ng-container *ngIf="media as media">
-                        <img class="card-img-top" [src]="media.source_url" width="300" height="169">
-                    </ng-container>
-                </ng-template>
-            </ng-container>
-        </ng-container>
-        <h1 lass="card-title"> {{post.title.rendered}} </h1>
-
+        <img [src]="media$ | async">
+        <h1>
+            {{post.title.rendered}}
+        </h1>
     </div>
 </a>
