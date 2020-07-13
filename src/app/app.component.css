@@ -44,12 +44,7 @@
 }
 
 .nav li a:hover {
-    display: block;
     color: #a03065;
-    text-align: center;
-    font-weight: bold;
-    padding: 16px;
-    text-decoration: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -67,32 +62,27 @@
 .dropbtn {
     background-color: #a03065;
     color: white;
+    width: 100%;
     padding: 16px;
-    font-size: 16px;
+    font-size: 20px;
     border: none;
+    text-align: center;
 }
 
 .dropdown {
     position: relative;
-    display: inline-block;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    width: 100%;
     z-index: 1;
 }
 
 .dropdown-content a:hover {
-    display: block;
     color: #a03065;
-    text-align: center;
-    font-weight: bold;
-    padding: 16px;
-    text-decoration: none;
 }
 
 .dropdown-content a {
