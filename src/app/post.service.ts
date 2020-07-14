@@ -50,11 +50,11 @@ export class PostService {
       catchError(() => of(this.DEFAULT_IMAGE)));
   }
 
-  getPostInfo(slug: string): Observable<Post> {
+  getPostInfo(slug: string): Observable<Post[]> {
     let params = new HttpParams();
     params = params.append('slug', slug);
 
-    return this.http.get<Post>(this.BASE_URL + '/posts', { params: params });
+    return this.http.get<Post[]>(this.BASE_URL + '/posts', { params: params });
   }
 
 

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Post } from '../post';
 import { Observable, } from 'rxjs';
 import { PostService } from '../post.service';
+import { filter } from 'rxjs/operators';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { PostService } from '../post.service';
 })
 export class PostPageComponent implements OnInit {
 
-  post$: Observable<Post>;
+  posts$: Observable<Post[]>;
   media$: Observable<string>;
   video: string;
 
@@ -28,21 +29,23 @@ export class PostPageComponent implements OnInit {
   }
 
   getMedia(): void {
-    this.post$.toPromise().then(result =>
-      this.media$ = this.postService.getPageImage(result[0])
-    )
+    this.posts$.subscribe(posts => {
+      if (posts) {
+        this.media$ = this.postService.getPageImage(posts[0]);
+      }
+    })
   }
 
   getVideo(): void {
-    this.post$.toPromise().then(result => {
-      if (result[0].video_embed) {
-        this.video = 'https://www.youtube.com/embed/' + this.getUrlId(result[0].video_embed)
+    this.posts$.subscribe(posts => {
+      if (posts && posts[0].video_embed) {
+        this.video = 'https://www.youtube.com/embed/' + this.getUrlId(posts[0].video_embed);
       }
     })
   }
 
   getPostInfo(slug: string): void {
-    this.post$ = this.postService.getPostInfo(slug);
+    this.posts$ = this.postService.getPostInfo(slug).pipe(filter((posts: Post[]) => posts.length > 0));
   }
 
 

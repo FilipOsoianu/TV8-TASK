@@ -1,20 +1,25 @@
 <div class="post">
+    <ng-container *ngIf="posts$ |async as posts ; else loading ">
 
-    <ng-container *ngFor="let post of post$ | async ">
+        <ng-container *ngFor="let post of posts">
+            <div class="post-title">
+                <h1>
+                    {{post.title.rendered}}
+                </h1>
+            </div>
 
-        <div class="post-title">
-            <h1>
-                {{post.title.rendered}}
-            </h1>
-        </div>
+            <ng-container *ngIf="video; else videoNotFound ">
+                <iframe [src]="video |safe:'resourceUrl'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </ng-container>
 
-        <ng-container *ngIf="video; else videoNotFound ">
-            <iframe [src]="video |safe:'resourceUrl'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <ng-template #videoNotFound>
+                <img [src]=" media$|async ">
+            </ng-template>
+            <div class="post-contenet" [innerHTML]="post.content.rendered | safe: 'html' "></div>
         </ng-container>
-
-        <ng-template #videoNotFound>
-            <img [src]=" media$|async ">
-        </ng-template>
-        <div class="post-contenet" [innerHTML]="post.content.rendered | safe: 'html' "></div>
     </ng-container>
+
+    <ng-template #loading>
+        <div class="loader"></div>
+    </ng-template>
 </div>
