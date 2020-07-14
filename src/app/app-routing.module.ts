@@ -20,7 +20,8 @@ const routes: Routes = [
   {
     path: 'post/:slug',
     loadChildren: () => import('./post-page/post-page.module').then(m => m.PostPageModule)
-  }
+  },
+  { path: '**', redirectTo: '/posts' }
 ];
 
 @NgModule({

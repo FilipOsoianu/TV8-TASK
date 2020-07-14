@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Post } from '../post';
@@ -10,7 +10,8 @@ import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
-  styleUrls: ['./post-page.component.css']
+  styleUrls: ['./post-page.component.css'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class PostPageComponent implements OnInit {
 
