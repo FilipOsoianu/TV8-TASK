@@ -18,11 +18,14 @@ export class PostPageComponent implements OnInit {
   posts$: Observable<Post[]>;
   media$: Observable<string>;
   video: string;
+  postNotFound: boolean;
+
 
   slug: string
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit(): void {
+    setTimeout(() => this.postNotFound = true, 2000);
     this.slug = this.route.snapshot.paramMap.get('slug');
     this.getPostInfo(this.slug);
     this.getMedia();

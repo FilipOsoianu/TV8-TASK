@@ -58,6 +58,13 @@
     font-weight: bold;
 }
 
+.post-title h2 {
+    text-align: center;
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 450px) {
     .post-title h1 {
         color: black;

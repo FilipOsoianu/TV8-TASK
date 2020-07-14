@@ -20,6 +20,11 @@
     </ng-container>
 
     <ng-template #loading>
+        <div class="post-title" *ngIf="postNotFound">
+            <h2>
+                Nu a fost gasita nici o stire
+            </h2>
+        </div>
         <div class="loader"></div>
     </ng-template>
 </div>
